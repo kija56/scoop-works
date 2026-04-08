@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 const footerLinks = {
   Products: [
@@ -36,11 +37,14 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-6">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent">
-                <span className="text-lg font-bold text-accent-foreground font-display">S</span>
-              </div>
-              <span className="text-xl font-bold font-display">Scoop</span>
+            <Link href="/" className="inline-flex items-center">
+              <Image
+                src="/scoopworks-logo-light.png"
+                alt="ScoopWorks"
+                width={470}
+                height={98}
+                className="h-16 w-auto md:h-20"
+              />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed opacity-70">
               Enterprise systems that scale with you. Powering the next generation of business operations worldwide.

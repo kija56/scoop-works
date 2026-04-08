@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 import { Menu, X, ChevronDown } from "lucide-react"
 
@@ -28,12 +29,16 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <span className="text-lg font-bold text-primary-foreground font-display">S</span>
-          </div>
-          <span className="text-xl font-bold font-display text-foreground">Scoop</span>
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2.5 md:py-3">
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/scoopworks-logo-dark.png"
+            alt="ScoopWorks"
+            width={470}
+            height={98}
+            className="h-14 w-auto md:h-16"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}

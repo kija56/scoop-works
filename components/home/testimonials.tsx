@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 const testimonials = [
   {
     quote:
@@ -33,6 +35,15 @@ export function Testimonials() {
           <h2 className="mt-4 font-display text-3xl font-bold text-foreground md:text-5xl text-balance">
             Loved by enterprise teams
           </h2>
+          <div className="mx-auto mt-8 w-full max-w-sm">
+            <Image
+              src="/undraw_informed-decision_2jwi.svg"
+              alt="Business decision making illustration"
+              width={380}
+              height={260}
+              className="testimonial-image-float h-auto w-full"
+            />
+          </div>
         </div>
 
         <div className="mt-16 grid gap-8 md:grid-cols-3">

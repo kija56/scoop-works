@@ -3,6 +3,7 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { CTASection } from "@/components/home/cta-section"
 import Link from "next/link"
+import Image from "next/image"
 import {
   Building2,
   Users,
@@ -29,6 +30,7 @@ const systems = [
     description:
       "Unify every aspect of your organization from procurement and production to distribution and finance. Scoop ERP gives you a single source of truth for all operational data.",
     icon: Building2,
+    image: "/undraw_report_k55w.svg",
     features: [
       "Centralized data management",
       "Real-time operational dashboards",
@@ -45,6 +47,7 @@ const systems = [
     description:
       "Manage the entire employee lifecycle from recruitment to retirement. Automate payroll, track performance, and build a thriving workplace culture.",
     icon: Users,
+    image: "/undraw_project-completed_ug9i.svg",
     features: [
       "Applicant tracking system",
       "Automated payroll processing",
@@ -61,6 +64,7 @@ const systems = [
     description:
       "Build deeper customer connections with intelligent sales pipelines, marketing automation, and comprehensive customer analytics.",
     icon: HandshakeIcon,
+    image: "/undraw_informed-decision_2jwi.svg",
     features: [
       "Visual sales pipeline",
       "Lead scoring & qualification",
@@ -77,6 +81,7 @@ const systems = [
     description:
       "Gain end-to-end visibility into your supply chain. Optimize logistics, manage suppliers, and ensure timely delivery of goods across the globe.",
     icon: Truck,
+    image: "/undraw_folder_8dxv.svg",
     features: [
       "Supplier relationship management",
       "Demand forecasting",
@@ -93,6 +98,7 @@ const systems = [
     description:
       "Take complete control of your finances with real-time reporting, multi-currency support, and automated reconciliation that keeps you audit-ready.",
     icon: Calculator,
+    image: "/undraw_revenue-analysis_fjh2.svg",
     features: [
       "General ledger management",
       "Accounts payable & receivable",
@@ -109,6 +115,7 @@ const systems = [
     description:
       "From small tasks to large-scale programs, manage every project with clarity. Gantt charts, resource allocation, and milestone tracking keep teams aligned.",
     icon: FolderKanban,
+    image: "/undraw_data_25jw.svg",
     features: [
       "Gantt chart visualization",
       "Resource allocation & planning",
@@ -125,6 +132,7 @@ const systems = [
     description:
       "Track stock levels across multiple warehouses in real time. Automated reordering, batch tracking, and barcode integration keep your inventory optimized.",
     icon: Package,
+    image: "/undraw_all-the-data_ijgn.svg",
     features: [
       "Real-time stock tracking",
       "Multi-warehouse management",
@@ -166,7 +174,7 @@ export default function ProductsPage() {
           >
             <div className="mx-auto max-w-7xl px-6">
               <div
-                className={`flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20 ${index % 2 !== 0 ? "lg:flex-row-reverse" : ""}`}
+                className={`flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20 ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
               >
                 {/* Content */}
                 <div className="flex-1">
@@ -203,10 +211,17 @@ export default function ProductsPage() {
                   </Link>
                 </div>
 
-                {/* Visual Placeholder */}
+                {/* Product Visual */}
                 <div className="flex-1">
-                  <div className="flex aspect-[4/3] items-center justify-center rounded-2xl border border-border bg-secondary/50">
-                    <system.icon className="h-20 w-20 text-primary/20" />
+                  <div className="group relative overflow-hidden rounded-3xl border border-border bg-background p-5 shadow-lg shadow-primary/5">
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.12),transparent_45%)]" />
+                    <Image
+                      src={system.image}
+                      alt={`${system.name} product illustration`}
+                      width={920}
+                      height={680}
+                      className="systems-image-float relative z-10 h-auto w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
                   </div>
                 </div>
               </div>
