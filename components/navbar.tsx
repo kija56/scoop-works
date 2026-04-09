@@ -3,17 +3,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
+import { products } from "@/lib/products"
 import { Menu, X, ChevronDown } from "lucide-react"
-
-const products = [
-  { name: "ERP", href: "/products#erp", description: "Enterprise Resource Planning" },
-  { name: "HRM", href: "/products#hrm", description: "Human Resource Management" },
-  { name: "CRM", href: "/products#crm", description: "Customer Relationship Management" },
-  { name: "SCM", href: "/products#scm", description: "Supply Chain Management" },
-  { name: "Accounting", href: "/products#accounting", description: "Financial Management" },
-  { name: "Project Management", href: "/products#project", description: "Plan, Track & Deliver" },
-  { name: "Inventory", href: "/products#inventory", description: "Inventory Management" },
-]
 
 const navLinks = [
   { name: "Products", href: "/products", hasDropdown: true },
@@ -29,14 +20,14 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2.5 md:py-3">
-        <Link href="/" className="flex items-center">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 md:py-2.5">
+        <Link href="/" className="flex shrink-0 items-center">
           <Image
             src="/scoopworks-logo-dark.png"
             alt="ScoopWorks"
             width={470}
             height={98}
-            className="h-14 w-auto md:h-16"
+            className="h-16 w-auto sm:h-[4.5rem] md:h-[5.25rem]"
             priority
           />
         </Link>
@@ -63,15 +54,15 @@ export function Navbar() {
                     <div className="grid w-[520px] grid-cols-2 gap-1 rounded-xl border border-border bg-background p-3 shadow-xl">
                       {products.map((product) => (
                         <Link
-                          key={product.name}
-                          href={product.href}
+                          key={product.id}
+                          href={`/products/${product.id}`}
                           className="flex flex-col rounded-lg px-4 py-3 transition-colors hover:bg-secondary"
                         >
                           <span className="text-sm font-semibold text-foreground">
                             {product.name}
                           </span>
                           <span className="text-xs text-muted-foreground">
-                            {product.description}
+                            {product.title}
                           </span>
                         </Link>
                       ))}

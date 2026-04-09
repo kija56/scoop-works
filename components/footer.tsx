@@ -3,13 +3,13 @@ import Image from "next/image"
 
 const footerLinks = {
   Products: [
-    { name: "ERP", href: "/products#erp" },
-    { name: "HRM", href: "/products#hrm" },
-    { name: "CRM", href: "/products#crm" },
-    { name: "SCM", href: "/products#scm" },
-    { name: "Accounting", href: "/products#accounting" },
-    { name: "Project Management", href: "/products#project" },
-    { name: "Inventory", href: "/products#inventory" },
+    { name: "ERP", href: "/products/erp" },
+    { name: "HRM", href: "/products/hrm" },
+    { name: "CRM", href: "/products/crm" },
+    { name: "SCM", href: "/products/scm" },
+    { name: "Accounting", href: "/products/accounting" },
+    { name: "Project Management", href: "/products/project" },
+    { name: "Inventory", href: "/products/inventory" },
   ],
   Company: [
     { name: "About", href: "/about" },

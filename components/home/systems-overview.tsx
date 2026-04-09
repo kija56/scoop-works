@@ -1,67 +1,9 @@
 import Link from "next/link"
 import Image from "next/image"
+import { products } from "@/lib/products"
 import {
   ArrowRight,
 } from "lucide-react"
-
-const systems = [
-  {
-    name: "ERP",
-    title: "Enterprise Resource Planning",
-    description:
-      "Unify your core business processes from procurement to production in one centralized platform.",
-    href: "/products#erp",
-    image: "/undraw_report_k55w.svg",
-  },
-  {
-    name: "HRM",
-    title: "Human Resource Management",
-    description:
-      "Streamline recruitment, payroll, performance, and employee lifecycle management.",
-    href: "/products#hrm",
-    image: "/undraw_project-completed_ug9i.svg",
-  },
-  {
-    name: "CRM",
-    title: "Customer Relationship Management",
-    description:
-      "Build stronger customer relationships with intelligent sales pipeline and engagement tools.",
-    href: "/products#crm",
-    image: "/undraw_informed-decision_2jwi.svg",
-  },
-  {
-    name: "SCM",
-    title: "Supply Chain Management",
-    description:
-      "Optimize logistics, supplier relationships, and end-to-end supply chain visibility.",
-    href: "/products#scm",
-    image: "/undraw_folder_8dxv.svg",
-  },
-  {
-    name: "Accounting",
-    title: "Financial Management",
-    description:
-      "Complete financial oversight with real-time reporting, compliance, and automated reconciliation.",
-    href: "/products#accounting",
-    image: "/undraw_revenue-analysis_fjh2.svg",
-  },
-  {
-    name: "Project Management",
-    title: "Plan, Track & Deliver",
-    description:
-      "Manage projects from ideation to completion with Gantt charts, resource allocation, and milestones.",
-    href: "/products#project",
-    image: "/undraw_data_25jw.svg",
-  },
-  {
-    name: "Inventory",
-    title: "Inventory Management",
-    description:
-      "Real-time stock tracking, automated reordering, and multi-warehouse management.",
-    href: "/products#inventory",
-    image: "/undraw_puzzle-solved_qdjq.svg",
-  },
-]
 
 export function SystemsOverview() {
   return (
@@ -134,10 +76,10 @@ export function SystemsOverview() {
 
         {/* Systems Grid */}
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-12">
-          {systems.map((system, index) => (
+          {products.map((system, index) => (
             <Link
-              key={system.name}
-              href={system.href}
+              key={system.id}
+              href={`/products/${system.id}`}
               className={`systems-card-enter group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-background p-6 transition-all duration-500 hover:-translate-y-2 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 lg:col-span-4 ${
                 index % 3 === 1 ? "lg:translate-y-6" : ""
               }`}
