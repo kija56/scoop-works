@@ -1,4 +1,5 @@
 import { Shield, Zap, Globe, Lock, RefreshCcw, HeadphonesIcon } from "lucide-react"
+import Image from "next/image"
 
 const features = [
   {
@@ -43,16 +44,27 @@ export function Features() {
   return (
     <section className="bg-secondary py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-accent">
-            Why Scoop
-          </span>
-          <h2 className="mt-4 font-display text-3xl font-bold text-foreground md:text-5xl text-balance">
-            Built for modern enterprises
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            We obsess over the details so you can focus on growing your business.
-          </p>
+        <div className="mx-auto grid max-w-5xl items-center gap-10 text-center lg:grid-cols-[1.1fr_0.9fr] lg:text-left">
+          <div>
+            <span className="text-sm font-semibold uppercase tracking-widest text-accent">
+              Why Scoop
+            </span>
+            <h2 className="mt-4 font-display text-3xl font-bold text-foreground md:text-5xl text-balance">
+              Built for modern enterprises
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              We obsess over the details so you can focus on growing your business.
+            </p>
+          </div>
+          <div className="mx-auto w-full max-w-sm rounded-3xl border border-border/70 bg-background/60 p-4 shadow-lg shadow-primary/5">
+            <Image
+              src="/undraw_project-completed_ug9i.svg"
+              alt="Project completion and delivery illustration"
+              width={420}
+              height={320}
+              className="feature-image-pulse h-auto w-full"
+            />
+          </div>
         </div>
 
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

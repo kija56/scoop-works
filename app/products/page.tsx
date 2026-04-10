@@ -2,7 +2,10 @@ import type { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { CTASection } from "@/components/home/cta-section"
+import { products } from "@/lib/products"
 import Link from "next/link"
+import Image from "next/image"
+import type { ComponentType } from "react"
 import {
   Building2,
   Users,
@@ -21,120 +24,15 @@ export const metadata: Metadata = {
     "Explore Scoop's suite of enterprise systems: ERP, HRM, CRM, SCM, Accounting, Project Management, and Inventory Management.",
 }
 
-const systems = [
-  {
-    id: "erp",
-    name: "ERP",
-    title: "Enterprise Resource Planning",
-    description:
-      "Unify every aspect of your organization from procurement and production to distribution and finance. Scoop ERP gives you a single source of truth for all operational data.",
-    icon: Building2,
-    features: [
-      "Centralized data management",
-      "Real-time operational dashboards",
-      "Automated procurement workflows",
-      "Production planning & scheduling",
-      "Multi-entity support",
-      "Custom reporting engine",
-    ],
-  },
-  {
-    id: "hrm",
-    name: "HRM",
-    title: "Human Resource Management",
-    description:
-      "Manage the entire employee lifecycle from recruitment to retirement. Automate payroll, track performance, and build a thriving workplace culture.",
-    icon: Users,
-    features: [
-      "Applicant tracking system",
-      "Automated payroll processing",
-      "Performance management",
-      "Time & attendance tracking",
-      "Employee self-service portal",
-      "Learning management system",
-    ],
-  },
-  {
-    id: "crm",
-    name: "CRM",
-    title: "Customer Relationship Management",
-    description:
-      "Build deeper customer connections with intelligent sales pipelines, marketing automation, and comprehensive customer analytics.",
-    icon: HandshakeIcon,
-    features: [
-      "Visual sales pipeline",
-      "Lead scoring & qualification",
-      "Marketing automation",
-      "Customer analytics & insights",
-      "Email campaign management",
-      "Service ticket management",
-    ],
-  },
-  {
-    id: "scm",
-    name: "SCM",
-    title: "Supply Chain Management",
-    description:
-      "Gain end-to-end visibility into your supply chain. Optimize logistics, manage suppliers, and ensure timely delivery of goods across the globe.",
-    icon: Truck,
-    features: [
-      "Supplier relationship management",
-      "Demand forecasting",
-      "Logistics & route optimization",
-      "Warehouse management",
-      "Order fulfillment tracking",
-      "Compliance management",
-    ],
-  },
-  {
-    id: "accounting",
-    name: "Accounting",
-    title: "Financial Management",
-    description:
-      "Take complete control of your finances with real-time reporting, multi-currency support, and automated reconciliation that keeps you audit-ready.",
-    icon: Calculator,
-    features: [
-      "General ledger management",
-      "Accounts payable & receivable",
-      "Multi-currency transactions",
-      "Automated bank reconciliation",
-      "Tax compliance & reporting",
-      "Financial forecasting",
-    ],
-  },
-  {
-    id: "project",
-    name: "Project Management",
-    title: "Plan, Track & Deliver",
-    description:
-      "From small tasks to large-scale programs, manage every project with clarity. Gantt charts, resource allocation, and milestone tracking keep teams aligned.",
-    icon: FolderKanban,
-    features: [
-      "Gantt chart visualization",
-      "Resource allocation & planning",
-      "Milestone & deadline tracking",
-      "Team collaboration tools",
-      "Budget & expense tracking",
-      "Time logging & reports",
-    ],
-  },
-  {
-    id: "inventory",
-    name: "Inventory",
-    title: "Inventory Management",
-    description:
-      "Track stock levels across multiple warehouses in real time. Automated reordering, batch tracking, and barcode integration keep your inventory optimized.",
-    icon: Package,
-    features: [
-      "Real-time stock tracking",
-      "Multi-warehouse management",
-      "Automated reorder points",
-      "Batch & serial number tracking",
-      "Barcode & QR integration",
-      "Stock valuation reports",
-    ],
-  },
-]
+const productIcons: Record<string, ComponentType<{ className?: string }>> = {
+  erp: Building2,
+  hrm: Users,
+  crm: HandshakeIcon,
+  scm: Truck,
+  accounting: Calculator,
+  project: FolderKanban,
+  inventory: Package,
+}
 
 export default function ProductsPage() {
   return (
@@ -148,7 +46,7 @@ export default function ProductsPage() {
               Products
             </span>
             <h1 className="mt-4 font-display text-4xl font-bold text-primary-foreground md:text-6xl text-balance">
-              Seven systems. One platform.
+              {`${products.length} systems. One platform.`}
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/70">
               Each system is powerful on its own, but together they create a
@@ -158,7 +56,9 @@ export default function ProductsPage() {
         </section>
 
         {/* Product Sections */}
-        {systems.map((system, index) => (
+        {products.map((system, index) => {
+          const ProductIcon = productIcons[system.id] ?? Building2
+          return (
           <section
             key={system.id}
             id={system.id}
@@ -166,13 +66,13 @@ export default function ProductsPage() {
           >
             <div className="mx-auto max-w-7xl px-6">
               <div
-                className={`flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20 ${index % 2 !== 0 ? "lg:flex-row-reverse" : ""}`}
+                className={`flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20 ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
               >
                 {/* Content */}
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-                      <system.icon className="h-6 w-6 text-primary" />
+                      <ProductIcon className="h-6 w-6 text-primary" />
                     </div>
                     <span className="text-xs font-bold uppercase tracking-widest text-accent">
                       {system.name}
@@ -195,24 +95,33 @@ export default function ProductsPage() {
                     ))}
                   </ul>
                   <Link
-                    href="/contact"
+                    href={`/products/${system.id}`}
                     className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
                   >
-                    Request a demo
+                    View product details
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
+                 
                 </div>
 
-                {/* Visual Placeholder */}
+                {/* Product Visual */}
                 <div className="flex-1">
-                  <div className="flex aspect-[4/3] items-center justify-center rounded-2xl border border-border bg-secondary/50">
-                    <system.icon className="h-20 w-20 text-primary/20" />
+                  <div className="group relative overflow-hidden rounded-3xl border border-border bg-background p-5 shadow-lg shadow-primary/5">
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.12),transparent_45%)]" />
+                    <Image
+                      src={system.image}
+                      alt={`${system.name} product illustration`}
+                      width={920}
+                      height={680}
+                      className="systems-image-float relative z-10 h-auto w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
                   </div>
                 </div>
               </div>
             </div>
           </section>
-        ))}
+          )
+        })}
 
         <CTASection />
       </main>

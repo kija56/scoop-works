@@ -88,3 +88,74 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes floatVertical {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseScale {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
+  }
+}
+
+@keyframes cardEnterUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.hero-image-float {
+  animation: floatVertical 6s ease-in-out infinite;
+}
+
+.hero-image-float-delayed {
+  animation: floatVertical 7s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.hero-image-float-soft {
+  animation: floatVertical 8s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+.feature-image-pulse {
+  animation: pulseScale 5.5s ease-in-out infinite;
+}
+
+.systems-image-float {
+  animation: floatVertical 6.8s ease-in-out infinite;
+}
+
+.testimonial-image-float {
+  animation: floatVertical 7.4s ease-in-out infinite;
+}
+
+.systems-card-enter {
+  animation: cardEnterUp 0.55s ease-out both;
+}
+
+.systems-card-sheen {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(16, 185, 129, 0.1) 42%,
+    rgba(109, 40, 217, 0.12) 58%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
