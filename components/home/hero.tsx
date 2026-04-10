@@ -11,7 +11,7 @@ export function Hero() {
             src="/hero-meeting-background.png"
             alt=""
             fill
-            className="object-cover object-center blur-md sm:blur-lg"
+            className="object-cover object-center blur-[2px] sm:blur-sm"
             priority
             sizes="100vw"
           />
