@@ -20,14 +20,17 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 md:py-2.5">
-        <Link href="/" className="flex shrink-0 items-center">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
+        <Link
+          href="/"
+          className="relative inline-block h-12 shrink-0 aspect-[470/98] sm:h-14 md:h-16"
+        >
           <Image
             src="/scoopworks-logo-dark.png"
             alt="ScoopWorks"
-            width={470}
-            height={98}
-            className="h-16 w-auto sm:h-[4.5rem] md:h-[5.25rem]"
+            fill
+            className="object-contain object-left"
+            sizes="(max-width: 768px) 240px, 320px"
             priority
           />
         </Link>
